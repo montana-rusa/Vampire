@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Add/View Transactions"
+        android:id="@+id/add"
+        android:icon="@drawable/plus"/>
+
+    <item
+        android:title="Settings"
+        android:id="@+id/settings"
+        android:icon="@drawable/wrench"/>
+
+    <item
+        android:title="Weekly Summary"
+        android:id="@+id/summary"
+        android:icon="@drawable/bar_chart"/>
+
+</menu>
