@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/midPurple"
-
     android:fadingEdge="vertical"
     tools:context=".AddFragment">
 
@@ -50,13 +49,29 @@
         app:layout_constraintStart_toStartOf="@id/editText"
         app:layout_constraintTop_toBottomOf="@id/editText" />
 
-
+<!--
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:background="@color/lightPurple"
         android:layout_margin="32dp"
         app:layout_constraintBottom_toBottomOf="parent">
+        -->
+
+    <androidx.cardview.widget.CardView
+        app:cardElevation="16dp"
+        app:cardBackgroundColor="@color/lightPurple"
+        app:cardCornerRadius="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@color/lightPurple"
+        android:layout_margin="32dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,10 +82,12 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Previous transactions:"
+                android:layout_margin="8dp"
+                android:text="   Previous transactions"
+                android:textAllCaps="true"
                 android:textColor="@color/darkPurple"
                 android:textSize="24sp"
-                android:layout_margin="8dp"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/historyView"
@@ -82,7 +99,10 @@
                 android:layout_margin="8dp"/>
 
         </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
 
-    </ScrollView>
+
+    <!--</ScrollView> -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

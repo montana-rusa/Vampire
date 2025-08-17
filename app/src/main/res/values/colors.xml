@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="lightPurple">#E6B6FC</color>
-    <color name="midPurple">#9C4DC2</color>
+    <color name="midPurple">#AA9C4DC2</color>
     <color name="darkPurple">#541671</color>
 </resources>
