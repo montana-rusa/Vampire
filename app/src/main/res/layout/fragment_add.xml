@@ -8,6 +8,16 @@
     android:fadingEdge="vertical"
     tools:context=".AddFragment">
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/victor"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
@@ -15,6 +25,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:inputType="numberDecimal"
+        android:hint="Enter amount"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="   Previous transactions"
+                android:text="     Previous purchases"
                 android:textAllCaps="true"
                 android:textColor="@color/darkPurple"
                 android:textSize="24sp"
@@ -110,6 +121,18 @@
         </LinearLayout>
         </ScrollView>
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD PURCHASES"
+        android:textColor="@color/darkPurple"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/editText"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="@id/editText"/>
 
 
     <!--</ScrollView> -->

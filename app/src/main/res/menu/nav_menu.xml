@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="Add/View Transactions"
+        android:title="Purchases"
         android:id="@+id/add"
         android:icon="@drawable/plus"/>
 
