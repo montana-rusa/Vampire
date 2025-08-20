@@ -70,6 +70,7 @@ class AddFragment : Fragment() {
         return view
     }
 
+    //compiles a list of all rows in updateHistory
     private fun updateHistory() {
         lifecycleScope.launch(Dispatchers.IO) {
             val buys : List<Buy> = buyDao.getAll()

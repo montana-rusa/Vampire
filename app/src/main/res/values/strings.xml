@@ -8,10 +8,10 @@
         <item>Groceries</item>
         <item>Alcohol</item>
         <item>Eating Out</item>
-        <item>Social Activities</item>
+        <item>Activities</item>
         <item>Transport</item>
         <item>Utilities</item>
-        <item>Aesthetics</item>
+        <item>Luxuries</item>
     </string-array>
 
 </resources>

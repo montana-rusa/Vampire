@@ -11,6 +11,9 @@ interface BudgetDao {
     @Insert
     fun insertAll(vararg budgets : Budget)
 
+    @Query("SELECT * FROM Budget")
+    fun getAll(): List<Budget>
+
     @Query("DELETE FROM Budget")
     fun clearTable()
 
