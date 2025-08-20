@@ -9,9 +9,12 @@ interface BudgetDao {
     fun updateBudget(budget: Budget)
 
     @Insert
-    fun insertAll(vararg buys : Buy)
+    fun insertAll(vararg budgets : Budget)
 
-    @Query("DELETE FROM Buy")
+    @Query("DELETE FROM Budget")
     fun clearTable()
+
+    @Query("SELECT COUNT(*) FROM Budget")
+    fun getRowCount(): Int
 
 }
