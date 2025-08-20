@@ -51,9 +51,6 @@ class MainActivity : AppCompatActivity() {
         fillIfEmpty()
 
 
-
-
-
     }
 
     //this function loads the Fragment given as its parameter onto the screen
