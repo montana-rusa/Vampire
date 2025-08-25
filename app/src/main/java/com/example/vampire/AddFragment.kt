@@ -26,7 +26,6 @@ class AddFragment : Fragment() {
     private lateinit var buyDao: BuyDao
     private lateinit var historyView : TextView
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
