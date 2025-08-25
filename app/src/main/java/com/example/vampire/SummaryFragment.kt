@@ -13,6 +13,10 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.time.DayOfWeek
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.TemporalAdjusters
 
 
 class SummaryFragment : Fragment() {
@@ -45,11 +49,14 @@ class SummaryFragment : Fragment() {
         group2 = ArrayList()
         group1 = ArrayList()
 
+        val weekTextView: TextView = view.findViewById(R.id.weekTextView)
+        weekTextView.text = getCurrentWeekDates()
+
         loadChartData()
         return view
     }
 
-    fun loadChartData() {
+    private fun loadChartData() {
 
         //enter coroutine
         lifecycleScope.launch(Dispatchers.IO) {
@@ -109,4 +116,22 @@ class SummaryFragment : Fragment() {
             }
         }
     }
+
+    private fun getCurrentWeekDates(): String {
+        // Today
+        val today = LocalDate.now()
+
+        // Find Monday of the current week
+        val monday = today.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
+        // Find Sunday of the current week
+        val sunday = today.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY))
+
+        // Formatter for display
+        val formatter = DateTimeFormatter.ofPattern("dd MMM yyyy")
+
+        // Return formatted string
+        return "Week: ${monday.format(formatter)} - ${sunday.format(formatter)}"
+    }
+
+
 }
