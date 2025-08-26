@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         //fills Budget database if empty
         db = DatabaseProvider.getDatabase(this)
         budgetDao = db.budgetDao()
-
         fillIfEmpty()
         weeklyDeleteData(this, db)
     }
@@ -67,15 +66,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun fillIfEmpty() {
         lifecycleScope.launch(Dispatchers.IO) {
+            budgetDao.clearTable()
             if (budgetDao.getRowCount() == 0) {
                 budgetDao.insertAll(
-                    Budget(type = "Groceries", amount = 30F),
-                    Budget(type = "Alcohol", amount = 15F),
-                    Budget(type = "Eating Out", amount = 20F),
-                    Budget(type = "Social Activities", amount = 20F),
-                    Budget(type = "Transport", amount = 15F),
-                    Budget(type = "Utilities", amount = 10F),
-                    Budget(type = "Aesthetics", amount = 10F),
+                    Budget(id=1,type = "Groceries", amount = 30F),
+                    Budget(id=2,type = "Alcohol", amount = 15F),
+                    Budget(id=3,type = "Eating Out", amount = 20F),
+                    Budget(id=4,type = "Activities", amount = 20F),
+                    Budget(id=5,type = "Transport", amount = 15F),
+                    Budget(id=6,type = "Utilities", amount = 10F),
+                    Budget(id=7,type = "Luxuries", amount = 10F)
                 ) } }
     }
 

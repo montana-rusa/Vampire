@@ -10,6 +10,10 @@ import com.github.mikephil.charting.charts.*
 import android.graphics.Color
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
+import com.github.mikephil.charting.components.Description
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.utils.ColorTemplate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -42,6 +46,7 @@ class SummaryFragment : Fragment() {
 
         //builds bar chart
         barChart = view.findViewById(R.id.barChart)
+        pieChart = view.findViewById<PieChart>(R.id.pieChart)
         db = DatabaseProvider.getDatabase(requireContext())
         budgetDao = db.budgetDao()
         buyDao = db.buyDao()
@@ -93,26 +98,67 @@ class SummaryFragment : Fragment() {
             for (i in 0..6) {
             group1.add(BarEntry(i.toFloat(), sums[i].toFloat())) }
 
+            //generating pie chart
+            val entries = ArrayList<PieEntry>()
+            entries.add(PieEntry(sums[0], "Groceries"))
+            entries.add(PieEntry(sums[1], "Alcohol"))
+            entries.add(PieEntry(sums[2], "Eating Out"))
+            entries.add(PieEntry(sums[3], "Activities"))
+            entries.add(PieEntry(sums[4], "Transport"))
+            entries.add(PieEntry(sums[5], "Utilities"))
+            entries.add(PieEntry(sums[6], "Luxuries"))
+
+            pieDataSet = PieDataSet(entries, "Numbers")
+            pieDataSet.colors = listOf(
+                0xFFEA698B.toInt(),
+                0xFFD55D92.toInt(),
+                0xFFC05299.toInt(),
+                0xFFAC46A1.toInt(),
+                0xFF973AA8.toInt(),
+                0xFF822FAF.toInt(),
+                0xFF6D23B6.toInt()
+            )
+
+
+            pieDataSet.valueTextSize = 12f
+            pieData = PieData(pieDataSet)
+            pieChart.data = pieData
+
             //leave coroutine
             withContext(Dispatchers.Main) {
 
                 //create sets 1 and 2
                 val set1 = BarDataSet(group1, "Buys")
-                set1.color = Color.RED
+                set1.color = 0xFFff7900.toInt()
                 val set2 = BarDataSet(group2, "Budget")
-                set2.color = Color.BLUE
+                set2.color = 0xFF3c096c.toInt()
 
                 val barWidth = 0.3f   // each bar is 30% wide
                 val barSpace = 0f     // no gap between bars in the same group
                 val groupSpace = 0.4f // 40% gap between groups
                 //0.3 + 0.3 + 0.4 = 1 so this works
 
+                val xAxis = barChart.xAxis
+                xAxis.granularity = 1f
+                xAxis.setCenterAxisLabels(true)
+                xAxis.position = XAxis.XAxisPosition.BOTTOM
+                xAxis.valueFormatter = IndexAxisValueFormatter(
+                    listOf("Groceries","Alcohol","Eating Out","Activities","Transport","Utilities","Luxuries"))
+
                 //create and generate barChart
+                val groupCount = 7
+                val start = 0f
                 barData = BarData(set1, set2)
                 barData.barWidth = barWidth
                 barChart.data = barData
                 barChart.groupBars(0f, groupSpace, barSpace)
+                xAxis.axisMinimum = start
+                xAxis.axisMaximum = start + barChart.barData.getGroupWidth(groupSpace, barSpace) * groupCount
+                barChart.description.isEnabled = false
+                pieChart.description.isEnabled = false
                 barChart.invalidate()
+                pieChart.invalidate() // refresh chart
+
             }
         }
     }
