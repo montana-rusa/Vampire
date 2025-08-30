@@ -3,6 +3,7 @@ package com.example.vampire
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -56,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         budgetDao = db.budgetDao()
         fillIfEmpty()
         weeklyDeleteData(this, db)
+        popupShow()
     }
 
     //this function loads the Fragment given as its parameter onto the screen
@@ -99,4 +101,24 @@ class MainActivity : AppCompatActivity() {
             prefs.edit { putString("last_cleared_date", today.toString()) }
         }
     }
+
+    private fun popupShow() {
+        val prefs = this.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        val isFirstRun = prefs.getBoolean("isFirstRun", true)
+
+        if (isFirstRun) {
+            AlertDialog.Builder(this)
+                .setTitle("Welcome to Vampire!")
+                .setMessage("You can use this app to track your spending on a weekly basis, set weekly budgets for each type, and view graphs relating to the data you've provided. I hope you find it useful!")
+                .setPositiveButton("Got it") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
+            // Save flag so it won’t show next time
+            prefs.edit { putBoolean("isFirstRun", false) }
+        }
+
+    }
+
 }
+
