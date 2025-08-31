@@ -58,7 +58,7 @@
 
     <Spinner
         android:id="@+id/categorySpinner"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@color/lightPurple"
@@ -83,7 +83,7 @@
         app:cardBackgroundColor="@color/lightPurple"
         app:cardCornerRadius="5dp"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
         android:background="@color/lightPurple"
         android:layout_margin="32dp"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -103,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="     Previous purchases"
+                android:text=" Previous purchases"
                 android:textAllCaps="true"
                 android:textColor="@color/darkPurple"
                 android:textSize="24sp"
@@ -128,13 +128,10 @@
         android:layout_height="wrap_content"
         android:text="ADD PURCHASES"
         android:textColor="@color/darkPurple"
-        android:textSize="34sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/editText"
         android:layout_marginBottom="10dp"
         app:layout_constraintStart_toStartOf="@id/editText"/>
-
-
-    <!--</ScrollView> -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

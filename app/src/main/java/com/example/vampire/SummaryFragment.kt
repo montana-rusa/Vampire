@@ -11,6 +11,7 @@ import android.graphics.Color
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import com.github.mikephil.charting.components.Description
+import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
@@ -58,6 +59,7 @@ class SummaryFragment : Fragment() {
         weekTextView.text = getCurrentWeekDates()
 
         loadChartData()
+
         return view
     }
 
@@ -123,6 +125,14 @@ class SummaryFragment : Fragment() {
             pieDataSet.valueTextSize = 12f
             pieData = PieData(pieDataSet)
             pieChart.data = pieData
+
+            val legend = pieChart.legend
+            legend.isWordWrapEnabled = true   // allow wrapping into multiple rows
+            legend.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
+            legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
+            legend.orientation = Legend.LegendOrientation.HORIZONTAL
+            legend.setDrawInside(false)
+
 
             //leave coroutine
             withContext(Dispatchers.Main) {

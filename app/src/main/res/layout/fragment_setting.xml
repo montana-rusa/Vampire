@@ -24,7 +24,7 @@
         android:text="SETTINGS"
         android:textColor="@color/darkPurple"
         android:layout_marginTop="50dp"
-        android:textSize="34sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginBottom="10dp"
@@ -68,7 +68,7 @@
         android:backgroundTint="@color/lightPurple"
         app:layout_constraintTop_toBottomOf="@id/cardView1"
         app:layout_constraintEnd_toEndOf="@id/cardView1"
-        android:layout_marginTop="250dp">
+        android:layout_marginTop="125dp">
 
     <Button
         android:id="@+id/submitButton2"
@@ -123,8 +123,43 @@
         app:layout_constraintBottom_toTopOf="@id/editText2"
         android:layout_marginBottom="10dp"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp"
+        android:translationZ="8dp"
+        android:backgroundTint="@color/lightPurple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/cardView1"
+        android:layout_marginBottom="100dp">
+
+        <Button
+            android:id="@+id/submitButton3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif"
+            android:padding="16dp"
+            android:text="Buy me a coffee!"
+            android:textColor="@color/darkPurple"
+            android:textSize="24sp"
+            app:backgroundTint="@android:color/transparent"
+            app:cornerRadius="10dp"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/kofi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cardView3"
+        android:layout_marginBottom="85dp"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

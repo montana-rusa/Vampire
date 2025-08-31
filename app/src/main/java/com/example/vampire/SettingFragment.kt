@@ -1,5 +1,7 @@
 package com.example.vampire
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +14,7 @@ import android.widget.Spinner
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.core.net.toUri
 
 class SettingFragment : Fragment() {
 
@@ -70,6 +73,13 @@ class SettingFragment : Fragment() {
                     db.budgetDao().updateBudget(newBudget)
                 }
             }
+        }
+
+        val kofiButton = view.findViewById<Button>(R.id.submitButton3)
+        kofiButton.setOnClickListener {
+            val url = "https://ko-fi.com/spleenstealer"
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+            startActivity(intent)
         }
 
 
